@@ -1,0 +1,185 @@
+breakparstyle.css
+
+
+body {
+  font-family: 'Merriweather Sans', sans-serif;
+  margin: 0;
+}
+
+#container {
+  display: grid;
+  grid-template-areas:
+    "nav"
+    "header"
+    "content"
+    "footer";
+}
+
+/* NAV */
+nav {
+  grid-area: nav;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  list-style: none;
+}
+
+/* HEADER */
+.title {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* CONTENT */
+.content {
+  grid-area: content;
+  padding: 10px;
+}
+
+/* FOOTER */
+footer {
+  grid-area: footer;
+  text-align: center;
+  padding: 10px;
+}
+
+/* ARTICLE BASE */
+article {
+  margin-bottom: 1em;
+  border-bottom: 1px solid #ccc;
+}
+
+article:last-of-type {
+  border-bottom: none;
+}
+
+/* HIDE extras on small */
+.authorbox img {
+  display: none;
+}
+
+.pullquote {
+  display: none;
+}
+
+/* ---------- MEDIUM (601px–1000px) ---------- */
+
+@media screen and (min-width: 601px) and (max-width: 1000px) {
+
+  #container {
+    width: 90%;
+    margin: auto;
+  }
+
+  nav ul {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .authorbox img {
+    display: block;
+    width: 100%;
+    margin-top: 0.5em;
+  }
+
+  .authorbox {
+    width: 25%;
+    max-width: 200px;
+    float: left;
+    margin-right: 20px;
+  }
+
+  .pullquote {
+    display: block;
+    margin-top: 10px;
+  }
+}
+
+/* ---------- LARGE (1001px+) ---------- */
+
+@media screen and (min-width: 1001px) {
+
+  #container {
+    width: 80%;
+    margin: auto;
+  }
+
+  nav ul {
+    flex-direction: row;
+  }
+
+  nav ul li {
+    margin-right: 15px;
+  }
+
+  .item1 {
+    margin-right: auto;
+  }
+
+  /* REMOVE FLOAT */
+  .authorbox {
+    float: none;
+    width: 100%;
+  }
+
+  /* ARTICLE GRID */
+  article {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr;
+    grid-template-areas:
+      "a b b"
+      "c c e"
+      ". d d";
+    gap: 20px;
+  }
+
+  .authorbox {
+    grid-area: a;
+  }
+
+  .section1 {
+    grid-area: b;
+  }
+
+  .image {
+    grid-area: c;
+  }
+
+  .section2 {
+    grid-area: d;
+  }
+
+  .pullquote {
+    grid-area: e;
+    display: block;
+  }
+
+  .section1 p:first-of-type,
+  .section2 p:first-of-type {
+    margin-top: 0;
+  }
+}
+
+/* ---------- EXTRA LARGE (1200px+) ---------- */
+
+@media screen and (min-width: 1200px) {
+
+  article {
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    grid-template-areas:
+      "a b b e"
+      "c c c ."
+      ". d d .";
+  }
+}
+
+/* OPTIONAL IMAGE FIX */
+img {
+  max-width: 100%;
+  height: auto;
+}
